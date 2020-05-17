@@ -33,19 +33,15 @@ Develop Enviornment : Ubuntu Linux Extension Pack
 
 
 ## 5. 사용한 오픈소스
-```
 FaceTracker : https://github.com/kylemcdonald/FaceTracker
 
 OpenCV : https://github.com/opencv/opencv
 
 OpenGL : https://www.opengl.org/
-```
 
 
 ## 6. 기존 프로젝트
-```
 "YAM-YAM" Game program using Face Tracker : https://github.com/CSID-DGU/2019-1-OSSP2-Openthedoor-7
-```
 
 
 ## 7. 라이센스

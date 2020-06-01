@@ -18,6 +18,6 @@ include_directories(${OpenCV_INCLUDE_DIR})
 
 set(SOURCE_FILES facialLandmarkDetection.cpp drawLandmarks.hpp renderFace.hpp)
 
-add_executable(LaneDetection1 ${SOURCE_FILES})
+add_executable(food_fighter ${SOURCE_FILES})
 
-target_link_libraries(LaneDetection1 ${OpenCV_LIBRARIES})
+target_link_libraries(food_fighter ${OpenCV_LIBRARIES})

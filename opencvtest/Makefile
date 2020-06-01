@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named LaneDetection1
+# Target rules for targets named food_fighter
 
 # Build rule for target.
-LaneDetection1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LaneDetection1
-.PHONY : LaneDetection1
+food_fighter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 food_fighter
+.PHONY : food_fighter
 
 # fast build rule for target.
-LaneDetection1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection1.dir/build.make CMakeFiles/LaneDetection1.dir/build
-.PHONY : LaneDetection1/fast
+food_fighter/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/food_fighter.dir/build.make CMakeFiles/food_fighter.dir/build
+.PHONY : food_fighter/fast
 
 facialLandmarkDetection.o: facialLandmarkDetection.cpp.o
 
@@ -149,7 +149,7 @@ facialLandmarkDetection.o: facialLandmarkDetection.cpp.o
 
 # target to build an object file
 facialLandmarkDetection.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection1.dir/build.make CMakeFiles/LaneDetection1.dir/facialLandmarkDetection.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/food_fighter.dir/build.make CMakeFiles/food_fighter.dir/facialLandmarkDetection.cpp.o
 .PHONY : facialLandmarkDetection.cpp.o
 
 facialLandmarkDetection.i: facialLandmarkDetection.cpp.i
@@ -158,7 +158,7 @@ facialLandmarkDetection.i: facialLandmarkDetection.cpp.i
 
 # target to preprocess a source file
 facialLandmarkDetection.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection1.dir/build.make CMakeFiles/LaneDetection1.dir/facialLandmarkDetection.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/food_fighter.dir/build.make CMakeFiles/food_fighter.dir/facialLandmarkDetection.cpp.i
 .PHONY : facialLandmarkDetection.cpp.i
 
 facialLandmarkDetection.s: facialLandmarkDetection.cpp.s
@@ -167,7 +167,7 @@ facialLandmarkDetection.s: facialLandmarkDetection.cpp.s
 
 # target to generate assembly for a file
 facialLandmarkDetection.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection1.dir/build.make CMakeFiles/LaneDetection1.dir/facialLandmarkDetection.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/food_fighter.dir/build.make CMakeFiles/food_fighter.dir/facialLandmarkDetection.cpp.s
 .PHONY : facialLandmarkDetection.cpp.s
 
 # Help Target
@@ -178,7 +178,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... LaneDetection1"
+	@echo "... food_fighter"
 	@echo "... facialLandmarkDetection.o"
 	@echo "... facialLandmarkDetection.i"
 	@echo "... facialLandmarkDetection.s"

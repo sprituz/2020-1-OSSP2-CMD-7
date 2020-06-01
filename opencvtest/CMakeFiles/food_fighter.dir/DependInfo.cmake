@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/dayeon/2020-1-OSSP2-CMD-7/opencvtest/facialLandmarkDetection.cpp" "/Users/dayeon/2020-1-OSSP2-CMD-7/opencvtest/CMakeFiles/LaneDetection1.dir/facialLandmarkDetection.cpp.o"
+  "/Users/dayeon/2020-1-OSSP2-CMD-7/opencvtest/facialLandmarkDetection.cpp" "/Users/dayeon/2020-1-OSSP2-CMD-7/opencvtest/CMakeFiles/food_fighter.dir/facialLandmarkDetection.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

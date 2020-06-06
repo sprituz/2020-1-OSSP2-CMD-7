@@ -2294,7 +2294,7 @@ void keyboard(unsigned char key, int x, int y)
   else if (char(key) == 'd')
   {
     model->FrameReset(); //d가 입력되면 프레임 재인식
-  }e
+  }
 }
 
 int startGame()
@@ -2648,7 +2648,7 @@ void endGame()
 
 void menuChoose()
 {
-  nameWindow("MENU CHOOSE", WINDOW_GUI_NORMAL);
+  namedWindow("MENU CHOOSE", WINDOW_GUI_NORMAL);
   resizeWindow("MENU CHOOSE", 640, 480);
 
   Mat image = cv::imread("../image/menu_c.PNG", CV_LOAD_IMAGE_COLOR);

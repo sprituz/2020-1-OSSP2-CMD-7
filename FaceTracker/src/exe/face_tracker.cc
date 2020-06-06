@@ -2294,7 +2294,7 @@ void keyboard(unsigned char key, int x, int y)
   else if (char(key) == 'd')
   {
     model->FrameReset(); //d가 입력되면 프레임 재인식
-  }
+  }e
 }
 
 int startGame()
@@ -2508,6 +2508,59 @@ void gameRank()
   waitKey(0);
 }
 
+void menuMouseEvent(int event, int x, int y, int flags, void *i=0)
+{
+  int menu_page=*(int *)i;
+  
+  if(event == CV_EVENT_LBUTTONDOWN);
+  {
+    if(x > 690 && x < 860)
+    {
+      if(y < 315 && y > 250) // first menu
+      {
+        Mat push_button = imread("../image/ready_c.PNG", CV_LOAD_IMAGE_COLOR);
+        imshow("YAM-YAM", push_button);
+        waitKey(1);
+        sleep(1);
+        push_button = imread("../image/START_c.PNG", CV_LOAD_IMAGE_COLOR);
+        imshow("YAM-YAM", push_button);
+        waitKey(1);
+        sleep(1);
+        cvDestroyWindow("YAM-YAM");
+        startGame();
+      }
+
+      else if(y > 415 && y < 480) // second menu
+      {
+        Mat push_button = imread("../image/ready_c.PNG", CV_LOAD_IMAGE_COLOR);
+        imshow("YAM-YAM", push_button);
+        waitKey(1);
+        sleep(1);
+        push_button = imread("../image/START_c.PNG", CV_LOAD_IMAGE_COLOR);
+        imshow("YAM-YAM", push_button);
+        waitKey(1);
+        sleep(1);
+        cvDestroyWindow("YAM-YAM");
+        startGame();
+      }
+
+      else if(y > 575 && y < 640) // third menu
+      {
+        Mat push_button = imread("../image/ready_c.PNG", CV_LOAD_IMAGE_COLOR);
+        imshow("YAM-YAM", push_button);
+        waitKey(1);
+        sleep(1);
+        push_button = imread("../image/START_c.PNG", CV_LOAD_IMAGE_COLOR);
+        imshow("YAM-YAM", push_button);
+        waitKey(1);
+        sleep(1);
+        cvDestroyWindow("YAM-YAM");
+        startGame();
+      }
+    }
+  }
+}
+
 void ruleMouseEvent(int event, int x, int y, int flags, void *i = 0)
 {
   int rule_page = *(int *)i;
@@ -2593,6 +2646,20 @@ void endGame()
   waitKey(0);
 }
 
+void menuChoose()
+{
+  nameWindow("MENU CHOOSE", WINDOW_GUI_NORMAL);
+  resizeWindow("MENU CHOOSE", 640, 480);
+
+  Mat image = cv::imread("../image/menu_c.PNG", CV_LOAD_IMAGE_COLOR);
+  int menu_page=1;
+  setMouseCallback("MENU CHOOSE", menuMouseEvent, (void *)&menu_page);
+
+  imshow("MENU CHOOSE", image);
+
+  waitKey(0);
+}
+
 void gameRule()
 {
 
@@ -2613,24 +2680,29 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
 
   if (event == CV_EVENT_LBUTTONDOWN)
   {
-    if (x > 144 && x < 307 && y > 240 && y < 303)
-    { //start
+    if (x > 144 && x < 307 && y > 240 && y < 303) // when user clicks start on intro page
+    {
       Mat push_button = imread("../image/start_push_c.PNG", CV_LOAD_IMAGE_COLOR);
       imshow("YAM-YAM", push_button);
-      push_button = imread("../image/ready_c.PNG", CV_LOAD_IMAGE_COLOR);
-      imshow("YAM-YAM", push_button);
       waitKey(1);
-      sleep(1);
-      push_button = imread("../image/START_c.PNG", CV_LOAD_IMAGE_COLOR);
-      imshow("YAM-YAM", push_button);
-      waitKey(1);
-      sleep(1);
-      cvDestroyWindow("YAM-YAM");
-      startGame();
+      menuChoose();
+      
+      
+      //Mat push_button = imread("../image/ready_c.PNG", CV_LOAD_IMAGE_COLOR);
+      //imshow("YAM-YAM", push_button);
+      //waitKey(1);
+      //sleep(1);
+      //push_button = imread("../image/START_c.PNG", CV_LOAD_IMAGE_COLOR);
+      //imshow("YAM-YAM", push_button);
+      //waitKey(1);
+      //sleep(1);
+      //cvDestroyWindow("YAM-YAM");
+      //startGame();
+      
 
     }
 
-    else if (x > 335 && x < 496 && y > 240 && y < 303) //rule
+    else if (x > 335 && x < 496 && y > 240 && y < 303) // when user clicks rule on intro page
     {
       Mat push_button = imread("../image/rule_push_c.PNG", CV_LOAD_IMAGE_COLOR);
       imshow("YAM-YAM", push_button);
@@ -2638,16 +2710,16 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
       gameRule();
     }
 
-    else if (x > 144 && x < 307 && y > 346 && y < 410)
-    { //rank
+    else if (x > 144 && x < 307 && y > 346 && y < 410) // when user clicks rank on intro page
+    { 
       Mat push_button = imread("../image/rank_push_c.PNG", CV_LOAD_IMAGE_COLOR);
       imshow("YAM-YAM", push_button);
       waitKey(1);
       gameRank();
     }
 
-    else if (x > 345 && x < 491 && y > 346 && y < 410)
-    { //exit
+    else if (x > 345 && x < 491 && y > 346 && y < 410) // when user clicks exit on intro page
+    { 
       exit(0);
     }
   }

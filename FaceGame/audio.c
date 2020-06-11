@@ -137,7 +137,7 @@ void playMusicFromMemory(Audio * audio, int volume)
 void initAudio(void)
 {
     Audio * global;
-    gDevice =static_cast<PrivateAudioDevice *>(calloc(1, sizeof(PrivateAudioDevice)));
+    gDevice = calloc(1, sizeof(PrivateAudioDevice));
     gSoundCount = 0;
 
     if(gDevice == NULL)
@@ -161,9 +161,9 @@ void initAudio(void)
     (gDevice->want).channels = AUDIO_CHANNELS;
     (gDevice->want).samples = AUDIO_SAMPLES;
     (gDevice->want).callback = audioCallback;
-    (gDevice->want).userdata = (calloc(1, sizeof(Audio)));
+    (gDevice->want).userdata = calloc(1, sizeof(Audio));
 
-    global = ((Audio *) (gDevice->want).userdata);
+    global = (gDevice->want).userdata;
 
     if(global == NULL)
     {
@@ -240,7 +240,7 @@ void freeAudio(Audio * audio)
 
 Audio * createAudio(const char * filename, uint8_t loop, int volume)
 {
-    Audio * new1 =static_cast<Audio *>(calloc(1, sizeof(Audio)));
+    Audio * new1 = calloc(1, sizeof(Audio));
 
     if(new1 == NULL)
     {
@@ -306,7 +306,7 @@ static inline void playAudio(const char * filename, Audio * audio, uint8_t loop,
     }
     else if(audio != NULL)
     {
-        new1 = static_cast<Audio *>(malloc(sizeof(Audio)));
+        new1 = malloc(sizeof(Audio));
 
         if(new1 == NULL)
         {

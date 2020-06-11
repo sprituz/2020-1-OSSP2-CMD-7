@@ -29,12 +29,12 @@ find_package(OpenGL REQUIRED)
 
 find_package(GLUT REQUIRED)
 
-include_directories(${OpenCV_INCLUDE_DIR}  ${OPENGL_INCLUDE_DIR}  ${GLUT_INCLUDE_DIR} ${SDL2_INCLUDE_DIR})
+include_directories(${OpenCV_INCLUDE_DIR}  ${OPENGL_INCLUDE_DIR}  ${GLUT_INCLUDE_DIR})
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
 
 
-#set(SOURCE_FILES FaceTracker.cpp)
+#set(SOURCE_FILES facialLandmarkDetection.cpp drawLandmarks.hpp renderFace.hpp)
 
 add_executable(food_fighter ${C_SOURCE_FILES} ${CPP_SOURCE_FILES})
 

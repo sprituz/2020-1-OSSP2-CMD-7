@@ -168,12 +168,12 @@ int start_game()
 //    detector = get_frontal_face_detector();
 //    deserialize("../../data/shape_predictor_68_face_landmarks.dat")>>sp;
 
-    Mat temp;
-    camera.read(temp);
-    cout<<temp.cols << "  "<< temp.rows;
+    // Mat temp;
+    // camera.read(temp);
+    // cout<<temp.cols << "  "<< temp.rows;
 //    camera.read(temp);
-    screenW = temp.cols;
-    screenH = temp.rows;
+    screenW = 640;
+    screenH = 480;
     glutInitWindowSize(screenW, screenH);
 
     glutCreateWindow("YAM YAM");

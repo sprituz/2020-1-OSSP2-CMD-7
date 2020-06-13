@@ -217,7 +217,7 @@ int main(int argc, char** argv)
     if (!camera.isOpened())
     { //카메라가 제대로 연결되지 않았다면 프로그램 종료
 
-        cout<< "카메라가 연결돼지 않아 동영상으로 연결합니다."<<endl;
+        cout<< "카메라가 연결되지 않아 동영상으로 연결합니다."<<endl;
         use_camera = 0;
 //      std::cout << "please check your camera!" << std::endl;
 //      return -1;
@@ -487,7 +487,7 @@ Mat draw_food(Mat im)
 {
     Mat overlay;
     im.copyTo(overlay);
-    int x_loc = im.cols - 300;
+    int x_loc = im.cols - 100;
     int y_loc = 25;
     for(auto item:ingridents)
     {
@@ -898,12 +898,10 @@ void faceCam()
   {
       sprintf(sss, "time limit : %d", (int)round(fps));
 
-    sprintf(ooo, "LIFE : %d", life);
-    nowLife = ooo;
-    putText(im, nowLife, cv::Point(500, 470), CV_FONT_HERSHEY_SIMPLEX, 1.0, CV_RGB(0, 0, 0), 2);
-    putText(im, sss, cv::Point(200, 150), CV_FONT_HERSHEY_SIMPLEX, 0.5, CV_RGB(255, 255, 255));
+    //sprintf(ooo, "LIFE : %d", life);
+    //nowLife = ooo;
+    //putText(im, nowLife, cv::Point(500, 470), CV_FONT_HERSHEY_SIMPLEX, 1.0, CV_RGB(0, 0, 0), 2);
+    putText(im, sss, cv::Point(50, 50), CV_FONT_HERSHEY_SIMPLEX, 1.0, CV_RGB(255, 255, 255),2);
   }
 
 }
-
-

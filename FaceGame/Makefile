@@ -1,5 +1,5 @@
 # Paths
-OPENCV_PATH=/usr/local/Cellar/opencv/4.3.0/include/opencv4
+OPENCV_PATH=/usr/local/include/opencv4/opencv
 
 # Programs
 CC=
@@ -7,17 +7,19 @@ CXX=g++ -std=c++11
 
 # Flags
 ARCH_FLAGS=
-OPENCV = `pkg-config opencv4 --cflags --libs` 
+
+OPENCV = `pkg-config opencv4 --cflags --libs`
 LIBS = $(OPENCV)
 CFLAGS=-Wextra -Wall $(ARCH_FLAGS) -O3 -Wno-long-long
 LDFLAGS=$(ARCH_FLAGS)
 DEFINES=
-INCLUDES=-I$(OPENCV_PATH) -Iinclude/ -I/opt/X11/include
+INCLUDES=-I$(OPENCV_PATH)/include -Iinclude/
 LIBRARIES=-L$(OPENCV_PATH)/lib -lopencv_core -lopencv_videoio -lopencv_highgui -lopencv_imgproc -lopencv_objdetect -lopencv_highgui -lopencv_face
-LINKER_FLAGS = -framework openGL -framework GLUT -lGLUT -lm -lSDL2 -lstdc++ -fpermissive -pthread
+LINKER_FLAGS = -lGL -lGLU -lglut -lm -lSDL2 -lstdc++ -fpermissive -pthread
 # Files which require compiling
 SOURCE_FILES=\
 	
+
 # Source files which contain a int main(..) function
 SOURCE_FILES_WITH_MAIN=src/FaceTracker.cpp
 

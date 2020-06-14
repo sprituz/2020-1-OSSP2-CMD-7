@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 src/FaceTracker.o: src/FaceTracker.cpp /opt/X11/include/GL/freeglut.h \
   /opt/X11/include/GL/freeglut_std.h /opt/X11/include/GL/freeglut_ext.h \
   /opt/X11/include/GL/glut.h /opt/X11/include/GL/glu.h \
@@ -164,3 +165,6 @@ src/FaceTracker.o: src/FaceTracker.cpp /opt/X11/include/GL/freeglut.h \
   /usr/local/Cellar/opencv/4.3.0/include/opencv4/opencv2/face/facemarkAAM.hpp \
   /usr/local/Cellar/opencv/4.3.0/include/opencv4/opencv2/face/face_alignment.hpp \
   /usr/local/Cellar/opencv/4.3.0/include/opencv4/opencv2/face/mace.hpp
+=======
+src/FaceTracker.o: src/FaceTracker.cpp
+>>>>>>> upstream/master

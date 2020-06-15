@@ -44,8 +44,7 @@ void display();
 void onMouseEvent(int event, int x, int y, int flags, void *i);
 void timer_func(int value);
 void faceCam();
-void overlayImage(const Mat &background, const Mat &foreground,
-                  Mat &output, Point2i location);
+void overlayImage(const Mat &background, const Mat &foreground, Mat &output, Point2i location);
 float cvpt_to_glpt(float x);
 float glpt_to_cvpt(float x);
 void draw_tri();
@@ -73,7 +72,6 @@ GLuint texture_background;
 
 float radiusRR = 50.0; //정사각형 한변길이
 
-
 int screenW;
 int screenH;
 
@@ -81,18 +79,17 @@ int player_num = -1;
 
 int food_number_global = -1;
 
-
-struct pos{
+struct pos
+{
     GLfloat x;
     GLfloat y;
-    
 };
 
-struct food {
+struct food 
+{
     struct pos pos;
     Mat img;
     int food_number;
-    
 };
 
 unsigned char PALETTE[9][3] = {
@@ -126,7 +123,7 @@ void keyboard(unsigned char key, int x, int y)
     }
     else if (char(key) == 'd')
     {
-        
+       
     }
 }
 //std::vector<pos> shapes;
@@ -176,7 +173,7 @@ int start_game()
     screenH = 480;
     glutInitWindowSize(screenW, screenH);
     
-    glutCreateWindow("YAM YAM");
+    glutCreateWindow("FOOD-FIGHTER");
     init();
     t0 = cvGetTickCount();
     faceCam();
@@ -196,32 +193,25 @@ int start_game()
     //키보드 콜백 함수 등록, 키보드가 눌러지면 호출된다.
     glutKeyboardFunc(keyboard);
     
-    
     glutMainLoop();
     
 }
-
 
 int main(int argc, char** argv)
 {
     //    player_num = 2;
     
     //    food_number_global=0;
-    
-    
-    
+
     camera = cv::VideoCapture(0);
     
     camera.set(cv::CAP_PROP_FRAME_WIDTH,1280);
     camera.set(CAP_PROP_FRAME_HEIGHT,720);
     if (!camera.isOpened())
     { //카메라가 제대로 연결되지 않았다면 프로그램 종료
-        
-
         use_camera = 0;
         std::cout << "please check your camera!" << std::endl;
         return -1;
-
     }
     //    detector = get_frontal_face_detector();
     //    deserialize("../../data/shape_predictor_68_face_landmarks.dat")>>sp;
@@ -242,8 +232,6 @@ int main(int argc, char** argv)
     igdts = {100,200, empty, 4};
     ingridents.push_back(igdts);
     
-    
-    
     for (int i = 0; i < files.size(); i++)
     {
         string character = files[i];
@@ -252,7 +240,7 @@ int main(int argc, char** argv)
             continue;
         
         Mat img = cv::imread(path + character);
-        cv::resize(img, img, cv::Size(50, 50));
+        cv::resize(img, img, cv::Size(30, 30));
         food igdts;
         
         auto x = std::rand() % im.cols;
@@ -279,11 +267,11 @@ int main(int argc, char** argv)
         ingridents.push_back(igdts);
     }
     Mat image = cv::imread("../../image/intro_c.PNG", cv::IMREAD_COLOR);
-    namedWindow("YAM-YAM", WINDOW_GUI_NORMAL);
-    resizeWindow("YAM-YAM", 640, 480);
-    setMouseCallback("YAM-YAM", onMouseEvent);
+    namedWindow("FOOD-FIGHTER", WINDOW_GUI_NORMAL);
+    resizeWindow("FOOD-FIGHTER", 640, 480);
+    setMouseCallback("FOOD-FIGHTER", onMouseEvent);
     
-    imshow("YAM-YAM", image);
+    imshow("FOOD-FIGHTER", image);
     waitKey(0);
     
     
@@ -483,7 +471,7 @@ void draw_tri()
     }
 }
 
-Mat draw_food(Mat im)
+Mat draw_food(Mat im) // show ingredients on the top
 {
     Mat overlay;
     im.copyTo(overlay);
@@ -496,7 +484,6 @@ Mat draw_food(Mat im)
             auto x = x_loc;
             auto y = y_loc;
             item.img.copyTo(overlay(cv::Rect(x,y,item.img.cols, item.img.rows)));
-            
         }
     }
     
@@ -505,14 +492,12 @@ Mat draw_food(Mat im)
         auto item = ingridents[i];
         if(item.food_number == 4)continue;
         
-        
         auto x = item.pos.x;
         auto y = item.pos.y;
         auto food_number = item.food_number;
         
         x = glpt_to_cvpt(x);
         y = glpt_to_cvpt(y);
-        
         
         if(x<=150)
             x = 150;
@@ -523,21 +508,13 @@ Mat draw_food(Mat im)
         if(y>=overlay.rows-item.img.rows*3)
             y = overlay.rows-item.img.rows*3;
         
-        item.img.copyTo(overlay(cv::Rect(x,y,item.img.cols, item.img.rows)));
-        
-        
+        item.img.copyTo(overlay(cv::Rect(x,y,item.img.cols, item.img.rows)));   
     }
-    
-    
     return overlay;
-    
-    
-    
 }
 
 void random_move()
 {
-    
     for (size_t i = 0; i <ingridents.size(); i++) {
         int plus_mnius_x = std::rand()%2;
         int plus_mnius_y = std::rand()%2;
@@ -548,7 +525,6 @@ void random_move()
         auto item = ingridents.at(i);
         
         food ingrident;
-        
         
         if(item.food_number == 4)
         {
@@ -564,7 +540,8 @@ void random_move()
             ingrident.pos.x = posx;
             ingrident.pos.y = posy;
         }
-        else{
+        else
+        {
             posx += item.pos.x;
             posy += item.pos.y;
             //            if(posx  <item.img.rows*3)posx  = item.img.rows*3;
@@ -577,19 +554,13 @@ void random_move()
             
             ingrident.pos.x = posx;
             ingrident.pos.y = posy;
-        }
-        
-        
-        
+        } 
         ingridents.at(i).pos= ingrident.pos;
     }
-    
-    
 }
 
 void display() //계속해서 호출되는 디스플레이 함수
 {
-    
     pthread_t p[4];
     int err;
     glClear(GL_COLOR_BUFFER_BIT);
@@ -609,17 +580,14 @@ void display() //계속해서 호출되는 디스플레이 함수
     
     std::vector<int> remove_idx;
     
-    
-    
     for(int i =0; i<pts.size(); i++)
     {
-        
-        for (int j = 0; j < ingridents.size();j++) {
+        for (int j = 0; j < ingridents.size();j++)
+        {
             auto pos = ingridents[j].pos;
             
             if(ingridents[j].food_number == 4)
             {
-                
                 if(xPts[i][0]  < pos.x && xPts[i][2] > pos.x && (pos.y-25) < yPts[i][2] && (pos.y+25)>yPts[i][3] )
                 {
                     ingridents[j].pos.x = -200;
@@ -634,8 +602,6 @@ void display() //계속해서 호출되는 디스플레이 함수
                     remove_idx.push_back(j);
                     ingridents[j].pos.x = -9999;
                 }
-                
-                
             }
         }
     }
@@ -699,8 +665,6 @@ std::vector<string> get_files(const char * path)
 
 void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
 {
-    
-    
     if (event == EVENT_LBUTTONDOWN)
     {
         if(x>150 && x<333 && y>330 && y<405 && started == true)
@@ -718,7 +682,7 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
             started = false;
             menu = true;
             Mat image = cv::imread("../../image/menu_c.PNG", cv::IMREAD_COLOR);
-            imshow("YAM-YAM", image);
+            imshow("FOOD-FIGHTER", image);
             waitKey(1);
         }
         
@@ -745,7 +709,7 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
         
         if(started == false && menu == true && food_number_global !=-1)
         {
-            cvDestroyWindow("YAM-YAM");
+            cvDestroyWindow("FOOD-FIGHTER");
             start_game();
         }
         
@@ -753,18 +717,14 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
         {
             started = true;
             Mat image = cv::imread("../../image/players_c.PNG", cv::IMREAD_COLOR);
-            imshow("YAM-YAM", image);
+            imshow("FOOD-FIGHTER", image);
             waitKey(1);
-            
-            
         }
-        
     }
 }
 
 void timer_func(int value)
 {
-    
     faceCam();
     im = draw_food(im);
     cvtColor(im, im, CV_BGR2RGB);
@@ -773,7 +733,6 @@ void timer_func(int value)
 }
 
 //void find_face(cv::Mat &image, )
-
 
 void faceCam()
 {
@@ -856,12 +815,12 @@ void faceCam()
         
         facePts.clear();
         pts.clear();
-        for (size_t i =0; i<faces.size(); i++) {
+        for (size_t i =0; i<faces.size(); i++)
+        {
             std::vector<cv::Point> facepts;
             std::vector<cv::Point> lippts;
-            for (size_t j = 0; j<landmarks[i].size();j++) {
-                
-                
+            for (size_t j = 0; j<landmarks[i].size();j++)
+            {
                 if(j<=27)
                 {
                     auto pt_cv = landmarks[i][j];
@@ -874,12 +833,10 @@ void faceCam()
                     //                  auto pt_cv = cv::Point(int(pt.x()), int(pt.y()));
                     lippts.push_back(pt_cv);
                 }
-                
             }
             facePts.push_back(facepts);
             pts.push_back(lippts);
         }
-        
     }
     CVtoGL();
     for(auto pt:pts)
@@ -897,11 +854,9 @@ void faceCam()
     if (show)
     {
         sprintf(sss, "time limit : %d", (int)round(fps));
-        
         //sprintf(ooo, "LIFE : %d", life);
         //nowLife = ooo;
         //putText(im, nowLife, cv::Point(500, 470), CV_FONT_HERSHEY_SIMPLEX, 1.0, CV_RGB(0, 0, 0), 2);
         putText(im, sss, cv::Point(50, 50), CV_FONT_HERSHEY_SIMPLEX, 1.0, CV_RGB(255, 255, 255),2);
     }
-    
 }

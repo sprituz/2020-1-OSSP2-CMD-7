@@ -397,7 +397,7 @@ void endGame(int success = 0)
         image = cv::imread("../../image/OVER_c.PNG", cv::IMREAD_COLOR);
     }
     else{
-        image = cv::imread("../../image/success.png", cv::IMREAD_COLOR);
+        image = cv::imread("../../image/success_c.PNG", cv::IMREAD_COLOR);
     }
     
     imshow("GAME END", image);

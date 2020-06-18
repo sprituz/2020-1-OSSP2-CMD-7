@@ -165,12 +165,12 @@ int start_game()
     //    detector = get_frontal_face_detector();
     //    deserialize("../../data/shape_predictor_68_face_landmarks.dat")>>sp;
     
-    // Mat temp;
-    // camera.read(temp);
-    // cout<<temp.cols << "  "<< temp.rows;
+     Mat temp;
+     camera.read(temp);
+     cout<<temp.cols << "  "<< temp.rows;
     //    camera.read(temp);
-    screenW = 640;
-    screenH = 480;
+    screenW = temp.cols;
+    screenH = temp.rows;
     glutInitWindowSize(screenW, screenH);
     
     glutCreateWindow("FOOD-FIGHTER");
@@ -205,8 +205,8 @@ int main(int argc, char** argv)
 
     camera = cv::VideoCapture(0);
     
-    camera.set(cv::CAP_PROP_FRAME_WIDTH,1280);
-    camera.set(CAP_PROP_FRAME_HEIGHT,720);
+    camera.set(cv::CAP_PROP_FRAME_WIDTH,640);
+    camera.set(CAP_PROP_FRAME_HEIGHT,480);
     if (!camera.isOpened())
     { //카메라가 제대로 연결되지 않았다면 프로그램 종료
         use_camera = 0;
@@ -240,7 +240,7 @@ int main(int argc, char** argv)
             continue;
         
         Mat img = cv::imread(path + character);
-        cv::resize(img, img, cv::Size(30, 30));
+        cv::resize(img, img, cv::Size(30, 30)); // size of ingredients
         food igdts;
         
         auto x = std::rand() % im.cols;
@@ -479,7 +479,8 @@ Mat draw_food(Mat im) // show ingredients on the top
     int y_loc = 25;
     for(auto item:ingridents)
     {
-        if(food_number_global == item.food_number){
+        if(food_number_global == item.food_number)
+        {
             y_loc+=item.img.rows+item.img.rows/4;
             auto x = x_loc;
             auto y = y_loc;
@@ -515,7 +516,8 @@ Mat draw_food(Mat im) // show ingredients on the top
 
 void random_move()
 {
-    for (size_t i = 0; i <ingridents.size(); i++) {
+    for (size_t i = 0; i <ingridents.size(); i++)
+    {
         int plus_mnius_x = std::rand()%2;
         int plus_mnius_y = std::rand()%2;
         int posx = std::rand() % 50;
@@ -588,16 +590,18 @@ void display() //계속해서 호출되는 디스플레이 함수
             
             if(ingridents[j].food_number == 4)
             {
-                if(xPts[i][0]  < pos.x && xPts[i][2] > pos.x && (pos.y-25) < yPts[i][2] && (pos.y+25)>yPts[i][3] )
+                if(xPts[i][0] < pos.x && xPts[i][2] > pos.x && (pos.y-25) < yPts[i][2] && (pos.y+25)>yPts[i][3] )
                 {
                     ingridents[j].pos.x = -200;
                     ingridents[j].pos.y = -200;
                     desLife();
                 }
             }
+
             else
             {
-                if(xPts[i][0]  < pos.x +ingridents[j].img.cols&& xPts[i][2] > pos.x-ingridents[j].img.cols && (pos.y-ingridents[j].img.cols) < yPts[i][2] && (pos.y+ingridents[j].img.cols)>yPts[i][3] )
+                if(xPts[i][0] < pos.x+ingridents[j].img.cols&& xPts[i][2] > pos.x-ingridents[j].img.cols 
+                && (pos.y-ingridents[j].img.cols) < yPts[i][2] && (pos.y+ingridents[j].img.cols)>yPts[i][3] )
                 {
                     remove_idx.push_back(j);
                     ingridents[j].pos.x = -9999;

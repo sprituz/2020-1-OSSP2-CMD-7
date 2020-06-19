@@ -717,12 +717,26 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
             start_game();
         }
         
-        if (x > 205 && x < 440 && y > 340 && y < 430 && started == false)
+        if (x > 205 && x < 440 && y > 340 && y < 430 && started == false) //click start on intro page
         {
             started = true;
             Mat image = cv::imread("../../image/players_c.PNG", cv::IMREAD_COLOR);
             imshow("FOOD-FIGHTER", image);
             waitKey(1);
+        }
+
+        else if (x > 480 && x < 715 && y > 340 && y < 430 && started == false) // click rule on intro page
+        {
+            // Mat image = cv::imread("../../image/rule_push_c.PNG", cv::IMREAD_COLOR);
+            // imshow("FOOD-FIGHTER", image);
+            // waitKey(1);
+            
+            namedWindow("RULES", WINDOW_GUI_NORMAL);
+            resizeWindow("RULES", 640, 480);
+
+            Mat image2 = cv::imread("../../image/rule_c.PNG", cv::IMREAD_COLOR);
+            imshow("RULES", image2);
+            waitKey(0);
         }
     }
 }

@@ -669,6 +669,7 @@ std::vector<string> get_files(const char * path)
 
 void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
 {
+    int rule = 0;
     if (event == EVENT_LBUTTONDOWN)
     {
         if(x>180 && x<415 && y>415 && y<505 && started == true)
@@ -723,14 +724,15 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
             Mat image = cv::imread("../../image/players_c.PNG", cv::IMREAD_COLOR);
             imshow("FOOD-FIGHTER", image);
             waitKey(1);
+            
         }
 
-        else if (x > 480 && x < 715 && y > 340 && y < 430 && started == false) // click rule on intro page
+        else if (x > 480 && x < 715 && y > 340 && y < 430 && started == false && rule ==0) // click rule on intro page
         {
             // Mat image = cv::imread("../../image/rule_push_c.PNG", cv::IMREAD_COLOR);
             // imshow("FOOD-FIGHTER", image);
             // waitKey(1);
-            
+            rule =1;
             namedWindow("RULES", WINDOW_GUI_NORMAL);
             resizeWindow("RULES", 640, 480);
 

@@ -671,12 +671,12 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
 {
     if (event == EVENT_LBUTTONDOWN)
     {
-        if(x>150 && x<333 && y>330 && y<405 && started == true)
+        if(x>180 && x<415 && y>415 && y<505 && started == true)
         {
             player_num = 1;
         }
         
-        if(x>440 && x<610 && y>340 && y<410 && started == true)
+        if(x>510 && x<740 && y>415 && y<505 && started == true)
         {
             player_num = 2;
         }
@@ -717,7 +717,7 @@ void onMouseEvent(int event, int x, int y, int flags, void *i = 0)
             start_game();
         }
         
-        if (x > 144 && x < 307 && y > 240 && y < 303 && started == false)
+        if (x > 205 && x < 440 && y > 340 && y < 430 && started == false)
         {
             started = true;
             Mat image = cv::imread("../../image/players_c.PNG", cv::IMREAD_COLOR);

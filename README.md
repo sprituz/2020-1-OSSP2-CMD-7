@@ -55,8 +55,11 @@ cd bin
 4.성능향상
 gpu 이용하여 성능 향상
 가상머신에선 사용 불가능
+
 (1).FaceTracker.cpp 내 dlib 주석 해제
+
 (2).makefile 내 dilb include
+
 (3).cuda cudnn 설치 후 실행
 
 

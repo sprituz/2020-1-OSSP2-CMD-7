@@ -7,7 +7,7 @@ FOOD-FIGHTER
 
 
 ## 2. 프로젝트 개요
-얼굴을 인식하여 음식모형을 먹어서 점수를 쌓고, 랭킹을 확인할 수 있는 게임입니다.
+얼굴을 인식하여 1인 또는 2인이 시간 내에 음식 모형을 먹는 게임입니다.
 
 
 ## 3. 프로젝트 목표
@@ -54,14 +54,15 @@ cd bin
 ./food_fighter
 ```
 4.성능향상
+
 gpu 이용하여 성능 향상
 가상머신에선 사용 불가능
 
-(1).FaceTracker.cpp 내 dlib 주석 해제
+(1)FaceTracker.cpp 내 dlib 주석 해제
 
-(2).makefile 내 dilb include
+(2)makefile 내 dilb include
 
-(3).cuda cudnn 설치 후 실행
+(3)cuda cudnn 설치 후 실행
 
 
 ## 6. 사용한 오픈소스

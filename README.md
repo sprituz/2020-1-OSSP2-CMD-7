@@ -33,6 +33,7 @@ Develop Enviornment : Ubuntu Linux Extension Pack(16.04 버전 사용)
 
 ## 5. 실행 방법
 1.opencv 설치
+
 4.0 버전 이상만 호환가능합니다.
 https://sunkyoo.github.io/opencv4cvml/OpenCV4Linux.html 
 참고해주세요
